@@ -27,6 +27,11 @@ type WebConfig struct {
 	Port   uint
 }
 
+// Deploy contains information to deploy scripts
+type Deploy struct {
+	Path string
+}
+
 // Config contains goterra configuration
 type Config struct {
 	loaded bool
@@ -35,6 +40,7 @@ type Config struct {
 	URL    string      `json:"url"`
 	Secret string
 	Web    WebConfig
+	Deploy Deploy
 }
 
 // Singleton config
