@@ -68,6 +68,12 @@ func LoadConfig() Config {
 	config := Config{loaded: true}
 	yaml.Unmarshal([]byte(cfgfile), &config)
 	// fmt.Printf("Config: %+v\n", config)
+	if os.Getenv("GOT_SECRET") != "" {
+		config.Secret = os.Getenv("GOT_SECRET")
+	}
+	if os.Getenv("GOT_URL") != "" {
+		config.URL = os.Getenv("GOT_URL")
+	}
 	cfg = config
 	return config
 }
