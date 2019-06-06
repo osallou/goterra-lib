@@ -43,6 +43,7 @@ type Config struct {
 	Secret string
 	Web    WebConfig
 	Deploy Deploy
+	Amqp   string `json:"amqp"` // rabbitmq url connection "amqp://guest:guest@localhost:5672/"
 }
 
 // Singleton config
@@ -75,6 +76,9 @@ func LoadConfig() Config {
 	}
 	if os.Getenv("GOT_URL") != "" {
 		config.URL = os.Getenv("GOT_URL")
+	}
+	if os.Getenv("GOT_AMQP") != "" {
+		config.Amqp = os.Getenv("GOT_AMQP")
 	}
 	cfg = config
 	return config
