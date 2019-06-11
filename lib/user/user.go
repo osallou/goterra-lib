@@ -39,7 +39,7 @@ func Check(apiKey string) (AuthData, error) {
 	remote := []string{url, "auth", "api"}
 
 	req, _ := http.NewRequest("GET", strings.Join(remote, "/"), nil)
-	req.Header.Add("X-API-KEY", apiKey)
+	req.Header.Add("X-API-Key", apiKey)
 	req.Header.Add("Content-Type", "application/json")
 	resp, err := client.Do(req)
 	if err != nil {
