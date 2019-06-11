@@ -23,7 +23,7 @@ type User struct {
 // AuthData is result struct for authentication with user data and an authentication token
 type AuthData struct {
 	User  User
-	Token []byte
+	Token string
 }
 
 // Check checks X-API-Key authorization content and returns user info
