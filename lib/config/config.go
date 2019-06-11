@@ -40,7 +40,7 @@ type Config struct {
 	Redis  RedisConfig
 	Mongo  MongoConfig `json:"mongo"`
 	URL    string      `json:"url"`
-	Secret string
+	// Secret string
 	Fernet []string `json:"fernet"`
 	Web    WebConfig
 	Deploy Deploy
@@ -73,7 +73,7 @@ func LoadConfig() Config {
 	yaml.Unmarshal([]byte(cfgfile), &config)
 	// fmt.Printf("Config: %+v\n", config)
 	if os.Getenv("GOT_SECRET") != "" {
-		config.Secret = os.Getenv("GOT_SECRET")
+		config.Fernet = []string{os.Getenv("GOT_SECRET")}
 	}
 	if os.Getenv("GOT_URL") != "" {
 		config.URL = os.Getenv("GOT_URL")
