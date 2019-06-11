@@ -2,6 +2,7 @@ package goterratoken
 
 import (
 	"errors"
+	"fmt"
 	"os"
 	"strconv"
 	"time"
@@ -20,10 +21,12 @@ func FernetEncode(msg []byte) (token []byte, err error) {
 	token = []byte("")
 	k, kerr := fernet.DecodeKey(config.Fernet[0])
 	if kerr != nil {
-		return token, err
+		fmt.Printf("Failed to decode fernet key: %s\n", kerr)
+		return token, kerr
 	}
 	token, err = fernet.EncryptAndSign(msg, k)
 	if err != nil {
+		fmt.Printf("Failed to encrypt token: %s\n", err)
 		return token, err
 	}
 	//msg := fernet.VerifyAndDecrypt(tok, 60*time.Second, k)
