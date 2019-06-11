@@ -41,6 +41,7 @@ type Config struct {
 	Mongo  MongoConfig `json:"mongo"`
 	URL    string      `json:"url"`
 	Secret string
+	Fernet []string `json:"fernet"`
 	Web    WebConfig
 	Deploy Deploy
 	Amqp   string `json:"amqp"` // rabbitmq url connection "amqp://guest:guest@localhost:5672/"

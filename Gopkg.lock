@@ -10,6 +10,14 @@
   revision = "ec5e00d3c878b2a97bbe0884ef45ffd1b4f669f5"
 
 [[projects]]
+  branch = "master"
+  digest = "1:660e6c59164572d31b7983efcddc8584a112fdf7cdd23b02417a1db16be2990d"
+  name = "github.com/fernet/fernet-go"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "9eac43b88a5efb8651d24de9b68e87567e029736"
+
+[[projects]]
   digest = "1:c950e574951c7199fb3d990d0e7a61996f40f8e646ba7cf8a557878d4c737f53"
   name = "github.com/go-redis/redis"
   packages = [
@@ -101,6 +109,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/fernet/fernet-go",
     "github.com/go-redis/redis",
     "github.com/hashicorp/consul/api",
     "gopkg.in/yaml.v2",
