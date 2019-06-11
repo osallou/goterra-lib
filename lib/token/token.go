@@ -7,6 +7,10 @@ import (
 	"strconv"
 	"time"
 
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/hex"
+
 	"github.com/fernet/fernet-go"
 
 	terraConfig "github.com/osallou/goterra-lib/lib/config"
@@ -19,7 +23,11 @@ const TokenTTL time.Duration = 24 * time.Hour
 func FernetEncode(msg []byte) (token []byte, err error) {
 	config := terraConfig.LoadConfig()
 	token = []byte("")
-	k, kerr := fernet.DecodeKey(config.Fernet[0])
+
+	hash := hmac.New(sha256.New, []byte(config.Fernet[0]))
+	secret := hex.EncodeToString(hash.Sum(nil))
+
+	k, kerr := fernet.DecodeKey(secret)
 	if kerr != nil {
 		fmt.Printf("Failed to decode fernet key: %s\n", kerr)
 		return token, kerr
@@ -29,8 +37,7 @@ func FernetEncode(msg []byte) (token []byte, err error) {
 		fmt.Printf("Failed to encrypt token: %s\n", err)
 		return token, err
 	}
-	//msg := fernet.VerifyAndDecrypt(tok, 60*time.Second, k)
-	//fmt.Println(string(msg))
+
 	return token, nil
 }
 
@@ -46,7 +53,9 @@ func FernetDecode(token []byte) (msg []byte, err error) {
 	}
 	config := terraConfig.LoadConfig()
 	for _, secret := range config.Fernet {
-		k, kerr := fernet.DecodeKeys(secret)
+		hash := hmac.New(sha256.New, []byte(secret))
+		secretHash := hex.EncodeToString(hash.Sum(nil))
+		k, kerr := fernet.DecodeKeys(secretHash)
 		if kerr != nil {
 			continue
 		}
