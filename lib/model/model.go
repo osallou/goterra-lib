@@ -56,8 +56,7 @@ type Application struct {
 	Public      bool               `json:"public"`
 	Recipes     []string           `json:"recipes"` // recipe ids
 	Namespace   string             `json:"namespace"`
-	Template    map[string]string  `json:"template"` // template id
-	Inputs      map[string]string  `json:"inputs"`   // expected inputs varname, label
+	Template    string             `json:"template"` // template id
 	Image       string             `json:"image"`
 	Timestamp   int64              `json:"ts"`
 	Previous    string             `json:"prev"` // Previous app id, for versioning
