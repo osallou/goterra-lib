@@ -27,7 +27,7 @@ type Recipe struct {
 	Tags          []string           `json:"tags"`
 	Remote        string             `json:"remote"` // path in git repo
 	RemoteVersion string             `json:"rversion"`
-	Version       uint64             `json:"version"`
+	Version       string             `json:"version"`
 }
 
 // Template represents a terraform template
@@ -44,8 +44,8 @@ type Template struct {
 	Previous      string             `json:"prev"`   // Previous recipe id, for versioning
 	Tags          []string           `json:"tags"`
 	Remote        string             `json:"remote"`   // name of template in repo (dir)
-	RemoteVersion uint64             `json:"rversion"` // version of template in repo (subdir)
-	Version       uint64             `json:"version"`
+	RemoteVersion string             `json:"rversion"` // version of template in repo (subdir)
+	Version       string             `json:"version"`
 }
 
 // Application descripe an app to deploy
