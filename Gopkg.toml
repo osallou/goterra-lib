@@ -40,3 +40,7 @@
 [[constraint]]
   branch = "master"
   name = "github.com/fernet/fernet-go"
+
+[[constraint]]
+  name = "go.mongodb.org/mongo-driver"
+  version = "1.0.3"
