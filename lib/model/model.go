@@ -131,3 +131,11 @@ type RunAction struct {
 	ID      string            `json:"id"`
 	Secrets map[string]string `json:"secrets"`
 }
+
+// NSData represent a namespace
+type NSData struct {
+	ID      primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	Name    string             `json:"name"`
+	Owners  []string           `json:"owners"`
+	Members []string           `json:"members"`
+}
