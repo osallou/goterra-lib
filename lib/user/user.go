@@ -11,12 +11,13 @@ import (
 
 // User represents a user
 type User struct {
-	Logged   bool   `json:"logged"`
-	UID      string `json:"uid"`
-	APIKey   string `json:"apikey"`
-	Password string `json:"password"`
-	Admin    bool   `json:"admin"`
-	Email    string `json:"email"`
+	Logged    bool   `json:"logged"`
+	UID       string `json:"uid"`
+	APIKey    string `json:"apikey"`
+	Password  string `json:"password"`
+	Admin     bool   `json:"admin"`
+	SuperUser bool   `json:"super"`
+	Email     string `json:"email"`
 	// Namespaces map[string]bool `json:"namespaces"` // map of namespace names, if true user is owner of namespace else only a member
 }
 
