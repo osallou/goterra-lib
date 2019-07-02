@@ -121,6 +121,7 @@ type EndPoint struct {
 	Inputs   map[string]string `json:"inputs"` // expected inputs varname, label
 	Config   map[string]string `json:"config"` // Preset some inputs like endpoints url, ... to be set in terraform variables
 	Images   map[string]string `json:"images"` // map recipe image id to endpoint image id
+	Public   bool              `json:"public"`
 }
 
 // RunAction is message struct to be sent to the run component
