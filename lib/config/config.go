@@ -34,6 +34,10 @@ type Deploy struct {
 	Path string
 }
 
+type ACL struct {
+	AllowUserCreateNS bool `json:"acl_user_createns"`
+}
+
 // Config contains goterra configuration
 type Config struct {
 	loaded bool
@@ -47,6 +51,10 @@ type Config struct {
 	Amqp   string `json:"amqp"` // rabbitmq url connection "amqp://guest:guest@localhost:5672/"
 
 	Git string `json:"git"` // public repo for recipe and templates
+
+	Support string `json:"support` // Support email address
+
+	ACL ACL `json:"acl"` // ACL config
 }
 
 // Singleton config
@@ -86,6 +94,14 @@ func LoadConfig() Config {
 
 	if os.Getenv("GOT_GIT") != "" {
 		config.Git = os.Getenv("GOT_GIT")
+	}
+
+	if os.Getenv("GOT_SUPPORT") != "" {
+		config.Support = os.Getenv("GOT_SUPPORT")
+	}
+
+	if os.Getenv("GOT_ACL_USER_CREATENS") == "1" {
+		config.ACL.AllowUserCreateNS = true
 	}
 	cfg = config
 	return config
