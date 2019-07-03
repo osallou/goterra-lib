@@ -46,20 +46,22 @@ type Template struct {
 	Remote        string             `json:"remote"`   // name of template in repo (dir)
 	RemoteVersion string             `json:"rversion"` // version of template in repo (subdir)
 	Version       string             `json:"version"`
+	VarRecipes    string             `json:"varrecipes"`
 }
 
 // Application descripe an app to deploy
 type Application struct {
-	ID          primitive.ObjectID `json:"id" bson:"_id,omitempty"`
-	Name        string             `json:"name"`
-	Description string             `json:"description"`
-	Public      bool               `json:"public"`
-	Recipes     []string           `json:"recipes"` // recipe ids
-	Namespace   string             `json:"namespace"`
-	Template    string             `json:"template"` // template id
-	Image       string             `json:"image"`
-	Timestamp   int64              `json:"ts"`
-	Previous    string             `json:"prev"` // Previous app id, for versioning
+	ID              primitive.ObjectID  `json:"id" bson:"_id,omitempty"`
+	Name            string              `json:"name"`
+	Description     string              `json:"description"`
+	Public          bool                `json:"public"`
+	Recipes         []string            `json:"recipes"` // recipe ids
+	Namespace       string              `json:"namespace"`
+	Template        string              `json:"template"` // template id
+	Image           string              `json:"image"`
+	Timestamp       int64               `json:"ts"`
+	Previous        string              `json:"prev"`            // Previous app id, for versioning
+	TemplateRecipes map[string][]string `json:"templaterecipes"` // Recipes per template recipe variable
 }
 
 // Event represent an action (deploy, destroy, etc.) on a run (historical data)
