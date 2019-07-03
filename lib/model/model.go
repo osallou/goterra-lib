@@ -46,7 +46,7 @@ type Template struct {
 	Remote        string             `json:"remote"`   // name of template in repo (dir)
 	RemoteVersion string             `json:"rversion"` // version of template in repo (subdir)
 	Version       string             `json:"version"`
-	VarRecipes    string             `json:"varrecipes"`
+	VarRecipes    []string           `json:"varrecipes"` // Name of variables containing recipe list
 }
 
 // Application descripe an app to deploy
