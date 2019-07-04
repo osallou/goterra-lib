@@ -62,6 +62,8 @@ type Application struct {
 	Timestamp       int64               `json:"ts"`
 	Previous        string              `json:"prev"`            // Previous app id, for versioning
 	TemplateRecipes map[string][]string `json:"templaterecipes"` // Recipes per template recipe variable
+	Remote          string              `json:"remote"`          // name of template in repo (dir)
+	RemoteVersion   string              `json:"rversion"`        // version of template in repo (subdir)
 }
 
 // Event represent an action (deploy, destroy, etc.) on a run (historical data)
