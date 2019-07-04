@@ -18,6 +18,7 @@ type User struct {
 	Admin     bool   `json:"admin"`
 	SuperUser bool   `json:"super"`
 	Email     string `json:"email"`
+	Kind      string `json:"kind"` // Kind of auth used by user (local, google, etc.)
 	// Namespaces map[string]bool `json:"namespaces"` // map of namespace names, if true user is owner of namespace else only a member
 }
 
