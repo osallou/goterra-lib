@@ -58,7 +58,7 @@ type Application struct {
 	Recipes         []string            `json:"recipes"` // recipe ids
 	Namespace       string              `json:"namespace"`
 	Template        string              `json:"template"` // template id
-	Image           string              `json:"image"`
+	Image           []string            `json:"image"`
 	Timestamp       int64               `json:"ts"`
 	Previous        string              `json:"prev"`            // Previous app id, for versioning
 	TemplateRecipes map[string][]string `json:"templaterecipes"` // Recipes per template recipe variable
