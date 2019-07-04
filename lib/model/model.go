@@ -124,6 +124,10 @@ type EndPoint struct {
 	Config   map[string]string `json:"config"` // Preset some inputs like endpoints url, ... to be set in terraform variables
 	Images   map[string]string `json:"images"` // map recipe image id to endpoint image id
 	Public   bool              `json:"public"`
+
+	Timestamp int64  `json:"ts"`
+	Remote    string `json:"remote"` // name of template in repo (dir)
+
 }
 
 // RunAction is message struct to be sent to the run component
