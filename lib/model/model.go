@@ -28,6 +28,7 @@ type Recipe struct {
 	Remote        string             `json:"remote"` // path in git repo
 	RemoteVersion string             `json:"rversion"`
 	Version       string             `json:"version"`
+	Frozen        bool               `json:"frozen"`
 }
 
 // Template represents a terraform template
@@ -47,6 +48,7 @@ type Template struct {
 	RemoteVersion string             `json:"rversion"` // version of template in repo (subdir)
 	Version       string             `json:"version"`
 	VarRecipes    []string           `json:"varrecipes"` // Name of variables containing recipe list
+	Frozen        bool               `json:"frozen"`
 }
 
 // Application descripe an app to deploy
@@ -64,6 +66,8 @@ type Application struct {
 	TemplateRecipes map[string][]string `json:"templaterecipes"` // Recipes per template recipe variable
 	Remote          string              `json:"remote"`          // name of template in repo (dir)
 	RemoteVersion   string              `json:"rversion"`        // version of template in repo (subdir)
+	Version         string              `json:"version"`
+	Frozen          bool                `json:"frozen"`
 }
 
 // Event represent an action (deploy, destroy, etc.) on a run (historical data)
