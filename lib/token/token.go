@@ -24,6 +24,10 @@ func FernetEncode(msg []byte) (token []byte, err error) {
 	config := terraConfig.LoadConfig()
 	token = []byte("")
 
+	if config.Fernet == nil || len(config.Fernet) == 0 {
+		return nil, fmt.Errorf("no fernet secret defined")
+	}
+
 	hash := hmac.New(sha256.New, []byte(config.Fernet[0]))
 	secret := hex.EncodeToString(hash.Sum(nil))
 
