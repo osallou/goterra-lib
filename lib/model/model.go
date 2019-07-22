@@ -13,42 +13,44 @@ type Model struct {
 
 // Recipe describe a recipe for an app
 type Recipe struct {
-	ID            primitive.ObjectID `json:"id" bson:"_id,omitempty"`
-	Name          string             `json:"name"`
-	Description   string             `json:"description"`
-	Script        string             `json:"script"`
-	Public        bool               `json:"public"`
-	Namespace     string             `json:"namespace"`
-	BaseImages    []string           `json:"base"`
-	ParentRecipe  string             `json:"parent"`
-	Timestamp     int64              `json:"ts"`
-	Previous      string             `json:"prev"`   // Previous recipe id, for versioning
-	Inputs        map[string]string  `json:"inputs"` // List of input variables needed when executing at app for this recipe, those variables should be sent as env_XX if XX is in requires: varname,label
-	Tags          []string           `json:"tags"`
-	Remote        string             `json:"remote"` // path in git repo
-	RemoteVersion string             `json:"rversion"`
-	Version       string             `json:"version"`
-	Frozen        bool               `json:"frozen"`
+	ID            primitive.ObjectID  `json:"id" bson:"_id,omitempty"`
+	Name          string              `json:"name"`
+	Description   string              `json:"description"`
+	Script        string              `json:"script"`
+	Public        bool                `json:"public"`
+	Namespace     string              `json:"namespace"`
+	BaseImages    []string            `json:"base"`
+	ParentRecipe  string              `json:"parent"`
+	Timestamp     int64               `json:"ts"`
+	Previous      string              `json:"prev"`   // Previous recipe id, for versioning
+	Inputs        map[string]string   `json:"inputs"` // List of input variables needed when executing at app for this recipe, those variables should be sent as env_XX if XX is in requires: varname,label
+	Tags          []string            `json:"tags"`
+	Remote        string              `json:"remote"` // path in git repo
+	RemoteVersion string              `json:"rversion"`
+	Version       string              `json:"version"`
+	Frozen        bool                `json:"frozen"`
+	Defaults      map[string][]string `json:"defaults"`
 }
 
 // Template represents a terraform template
 type Template struct {
-	ID            primitive.ObjectID `json:"id" bson:"_id,omitempty"`
-	Namespace     string             `json:"namespace"`
-	Timestamp     int64              `json:"ts"`
-	Public        bool               `json:"public"`
-	Name          string             `json:"name"`
-	Description   string             `json:"description"`
-	Data          map[string]string  `json:"data"` // map of cloud kind / terraform template
-	Model         []Model            `json:"model"`
-	Inputs        map[string]string  `json:"inputs"` // expected inputs varname, label
-	Previous      string             `json:"prev"`   // Previous recipe id, for versioning
-	Tags          []string           `json:"tags"`
-	Remote        string             `json:"remote"`   // name of template in repo (dir)
-	RemoteVersion string             `json:"rversion"` // version of template in repo (subdir)
-	Version       string             `json:"version"`
-	VarRecipes    []string           `json:"varrecipes"` // Name of variables containing recipe list
-	Frozen        bool               `json:"frozen"`
+	ID            primitive.ObjectID  `json:"id" bson:"_id,omitempty"`
+	Namespace     string              `json:"namespace"`
+	Timestamp     int64               `json:"ts"`
+	Public        bool                `json:"public"`
+	Name          string              `json:"name"`
+	Description   string              `json:"description"`
+	Data          map[string]string   `json:"data"` // map of cloud kind / terraform template
+	Model         []Model             `json:"model"`
+	Inputs        map[string]string   `json:"inputs"` // expected inputs varname, label
+	Previous      string              `json:"prev"`   // Previous recipe id, for versioning
+	Tags          []string            `json:"tags"`
+	Remote        string              `json:"remote"`   // name of template in repo (dir)
+	RemoteVersion string              `json:"rversion"` // version of template in repo (subdir)
+	Version       string              `json:"version"`
+	VarRecipes    []string            `json:"varrecipes"` // Name of variables containing recipe list
+	Frozen        bool                `json:"frozen"`
+	Defaults      map[string][]string `json:"defaults"`
 }
 
 // Application descripe an app to deploy
@@ -68,6 +70,7 @@ type Application struct {
 	RemoteVersion   string              `json:"rversion"`        // version of template in repo (subdir)
 	Version         string              `json:"version"`
 	Frozen          bool                `json:"frozen"`
+	Defaults        map[string][]string `json:"defaults"`
 }
 
 // Event represent an action (deploy, destroy, etc.) on a run (historical data)
@@ -131,9 +134,9 @@ type EndPoint struct {
 	Images   map[string]string `json:"images"` // map recipe image id to endpoint image id
 	Public   bool              `json:"public"`
 
-	Timestamp int64  `json:"ts"`
-	Remote    string `json:"remote"` // name of template in repo (dir)
-
+	Timestamp int64               `json:"ts"`
+	Remote    string              `json:"remote"` // name of template in repo (dir)
+	Defaults  map[string][]string `json:"defaults"`
 }
 
 // RunAction is message struct to be sent to the run component
