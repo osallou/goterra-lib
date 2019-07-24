@@ -56,7 +56,7 @@ type Config struct {
 
 	ACL ACL `json:"acl"` // ACL config
 
-	DefaultImage string `json:"default_image"` // base image name to use if no recipe used
+	DefaultImage string `json:"default_image" yaml:"default_image"` // base image name to use if no recipe used
 }
 
 // Singleton config
