@@ -52,9 +52,11 @@ type Config struct {
 
 	Git string `json:"git"` // public repo for recipe and templates
 
-	Support string `json:"support` // Support email address
+	Support string `json:"support"` // Support email address
 
 	ACL ACL `json:"acl"` // ACL config
+
+	DefaultImage string `json:"default_image"` // base image name to use if no recipe used
 }
 
 // Singleton config
