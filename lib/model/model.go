@@ -80,6 +80,15 @@ type Event struct {
 	Success bool   `json:"success"`
 }
 
+// EndPointSecret contains credentials (password crypted) for a user/endpoint combination
+type EndPointSecret struct {
+	UID       string `json:"uid"`
+	UserName  string `json:"name"`
+	Password  string `json:"password"`
+	EndPoint  string `json:"endpoint"`
+	Namespace string `json:"namespace"`
+}
+
 // Run represents a deployment info for an app
 type Run struct {
 	Name            string             `json:"name"`
