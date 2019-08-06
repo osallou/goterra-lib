@@ -148,6 +148,14 @@ type EndPoint struct {
 	Defaults  map[string][]string `json:"defaults"`
 }
 
+// EndpointDefaults defines user data for endpoint id
+type EndpointDefaults struct {
+	UID       string              `json:"uid"`
+	Endpoint  string              `json:"endpoint"`
+	Namespace string              `json:"ns"`
+	Defaults  map[string][]string `json:"defaults"`
+}
+
 // RunAction is message struct to be sent to the run component
 // action: apply or destroy
 // id: identifier of the run
