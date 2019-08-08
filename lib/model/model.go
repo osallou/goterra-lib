@@ -13,7 +13,7 @@ type Model struct {
 
 // Recipe describe a recipe for an app
 type Recipe struct {
-	ID            primitive.ObjectID  `json:"id" bson:"_id,omitempty"`
+	ID            primitive.ObjectID  `json:"id" bson:"_id,omitempty" yaml:"-"`
 	Name          string              `json:"name"`
 	Description   string              `json:"description"`
 	Script        string              `json:"script"`
@@ -34,7 +34,7 @@ type Recipe struct {
 
 // Template represents a terraform template
 type Template struct {
-	ID            primitive.ObjectID  `json:"id" bson:"_id,omitempty"`
+	ID            primitive.ObjectID  `json:"id" bson:"_id,omitempty" yaml:"-"`
 	Namespace     string              `json:"namespace"`
 	Timestamp     int64               `json:"ts"`
 	Public        bool                `json:"public"`
@@ -55,7 +55,7 @@ type Template struct {
 
 // Application descripe an app to deploy
 type Application struct {
-	ID              primitive.ObjectID  `json:"id" bson:"_id,omitempty"`
+	ID              primitive.ObjectID  `json:"id" bson:"_id,omitempty" yaml:"-"`
 	Name            string              `json:"name"`
 	Description     string              `json:"description"`
 	Public          bool                `json:"public"`
@@ -93,7 +93,7 @@ type EndPointSecret struct {
 type Run struct {
 	Name            string             `json:"name"`
 	Description     string             `json:"description"`
-	ID              primitive.ObjectID `json:"id" bson:"_id,omitempty"`
+	ID              primitive.ObjectID `json:"id" bson:"_id,omitempty" yaml:"-"`
 	AppID           string             `json:"appID"` // Application id
 	Inputs          map[string]string  `json:"inputs"`
 	SensitiveInputs map[string]string  `json:"secretinputs"` // Secret variables (password, etc.) will be given to terraform as env variables
@@ -132,7 +132,7 @@ type Openstack struct {
 
 // EndPoint specifies a cloud endpoint data
 type EndPoint struct {
-	ID        primitive.ObjectID `json:"id" bson:"_id,omitempty"`
+	ID        primitive.ObjectID `json:"id" bson:"_id,omitempty" yaml:"-"`
 	Name      string             `json:"name"`
 	Kind      string             `json:"kind"` // openstack, etc.
 	Namespace string             `json:"namespace"`
@@ -174,7 +174,7 @@ type UserAction struct {
 
 // NSData represent a namespace
 type NSData struct {
-	ID      primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	ID      primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty" yaml:"-"`
 	Name    string             `json:"name"`
 	Owners  []string           `json:"owners"`
 	Members []string           `json:"members"`
