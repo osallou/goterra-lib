@@ -178,4 +178,5 @@ type NSData struct {
 	Name    string             `json:"name"`
 	Owners  []string           `json:"owners"`
 	Members []string           `json:"members"`
+	Freeze  bool               `json:"freeze"` // If frozen, deploy actions are forbidden
 }
